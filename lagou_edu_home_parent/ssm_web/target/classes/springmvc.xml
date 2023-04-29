@@ -19,4 +19,7 @@
 
     <!--4.放行静态资源-->
     <mvc:default-servlet-handler/>
+
+    <!--5.配置文件解析器-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver"/>
 </beans>
