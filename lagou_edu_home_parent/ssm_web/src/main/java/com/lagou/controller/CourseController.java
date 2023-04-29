@@ -72,4 +72,13 @@ public class CourseController {
         return new ResponseResult(true, 200, "图片上传成功", map);
 
     }
+
+    //新增课程信息
+    @RequestMapping("/saveOrUpdateCourse")
+    public ResponseResult saveOrUpdateCourse(@RequestBody CourseVO courseVO){
+
+        courseService.saveCourseOrTeacher(courseVO);
+        return new ResponseResult(true,200,"课程保存成功",null);
+    }
+
 }
