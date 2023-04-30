@@ -8,10 +8,10 @@ import java.util.Date;
 public class Teacher {
 
     //id
-    private int id;
+    private Integer id;
 
     //课程id
-    private int courseId;
+    private Integer courseId;
 
     //讲师姓名
     private String teacherName;
@@ -31,19 +31,19 @@ public class Teacher {
     //是否删除
     private int isDel;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public int getCourseId() {
+    public Integer getCourseId() {
         return courseId;
     }
 
-    public void setCourseId(int courseId) {
+    public void setCourseId(Integer courseId) {
         this.courseId = courseId;
     }
 

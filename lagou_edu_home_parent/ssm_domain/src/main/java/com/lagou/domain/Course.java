@@ -8,7 +8,7 @@ import java.util.Date;
 public class Course {
 
     //主键
-    private int id;
+    private Integer id;
 
     //课程名称
     private String courseName;
@@ -79,11 +79,11 @@ public class Course {
     //销量
     private int sales;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

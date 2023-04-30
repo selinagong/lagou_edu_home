@@ -17,5 +17,15 @@ public interface CourseMapper {
     //新增讲师信息
     public void saveTeacher(Teacher teacher);
 
-    //修改课程
+    //根据课程ID查询课程信息
+    public CourseVO findCourseById(int id);
+
+    //修改课程信息
+    public void updateCourse(Course course);
+
+    //修改讲师信息
+    public void updateTeacher(Teacher teacher);
+
+    //修改课程状态
+    public void updateCourseStatus(Course course);
 }
