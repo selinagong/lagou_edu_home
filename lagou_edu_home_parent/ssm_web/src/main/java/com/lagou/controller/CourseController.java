@@ -14,7 +14,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -76,7 +75,7 @@ public class CourseController {
 
     //新增课程信息
     @RequestMapping("/saveOrUpdateCourse")
-    public ResponseResult saveOrUpdateCourse(@RequestBody CourseVO courseVO) throws InvocationTargetException, IllegalAccessException {
+    public ResponseResult saveOrUpdateCourse(@RequestBody CourseVO courseVO){
         if (courseVO.getId() == null) {
             courseService.saveCourseOrTeacher(courseVO);
         }else {
