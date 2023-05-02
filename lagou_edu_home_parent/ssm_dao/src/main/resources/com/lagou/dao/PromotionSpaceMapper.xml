@@ -22,14 +22,4 @@
     <select id="findPromotionSpaceById" parameterType="int" resultType="promotionSpace">
         select * from promotion_space where id = #{id}
     </select>
-
-    <!--广告分页查询-->
-
-    <!--新建广告-->
-
-    <!--修改广告-->
-
-    <!--回显广告信息-->
-
-    <!--广告状态上下线-->
 </mapper>

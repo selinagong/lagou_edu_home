@@ -33,6 +33,8 @@ public class PromotionAd {
     private Integer priority;
     private String img;
 
+    private PromotionSpace promotionSpace;
+
     public String getText() {
         return text;
     }
@@ -147,6 +149,14 @@ public class PromotionAd {
 
     public void setImg(String img) {
         this.img = img;
+    }
+
+    public PromotionSpace getPromotionSpace() {
+        return promotionSpace;
+    }
+
+    public void setPromotionSpace(PromotionSpace promotionSpace) {
+        this.promotionSpace = promotionSpace;
     }
 
     @Override

@@ -17,16 +17,4 @@ public interface PromotionSpaceMapper {
 
     // 回显广告位名称
     public PromotionSpace findPromotionSpaceById(int id);
-
-    // 广告分页查询
-
-    // 图片上传
-
-    // 新建广告
-
-    // 修改广告
-
-    // 回显广告信息
-
-    // 广告状态上下线
 }
