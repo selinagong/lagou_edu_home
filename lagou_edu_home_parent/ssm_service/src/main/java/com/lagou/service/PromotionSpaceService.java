@@ -14,4 +14,7 @@ public interface PromotionSpaceService {
 
     // 修改广告位
     public void updatePromotionSpace(PromotionSpace promotionSpace);
+
+    // 回显广告位名称
+    public PromotionSpace findPromotionSpaceById(int id);
 }

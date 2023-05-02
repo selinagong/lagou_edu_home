@@ -16,6 +16,7 @@ public interface PromotionSpaceMapper {
     public void updatePromotionSpace(PromotionSpace promotionSpace);
 
     // 回显广告位名称
+    public PromotionSpace findPromotionSpaceById(int id);
 
     // 广告分页查询
 

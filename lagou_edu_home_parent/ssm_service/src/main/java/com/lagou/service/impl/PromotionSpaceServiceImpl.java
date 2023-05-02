@@ -41,4 +41,9 @@ public class PromotionSpaceServiceImpl implements PromotionSpaceService {
         promotionSpace.setUpdateTime(new Date());
         spaceMapper.updatePromotionSpace(promotionSpace);
     }
+
+    @Override
+    public PromotionSpace findPromotionSpaceById(int id) {
+        return spaceMapper.findPromotionSpaceById(id);
+    }
 }

@@ -32,4 +32,10 @@ public class PromotionSpaceController {
         }
         return new ResponseResult(true,200,"success",null);
     }
+
+    @RequestMapping("/findPromotionSpaceById")
+    public ResponseResult findPromotionSpaceById(int id){
+        PromotionSpace promotionSpace = spaceService.findPromotionSpaceById(id);
+        return new ResponseResult(true,200,"success",promotionSpace);
+    }
 }
