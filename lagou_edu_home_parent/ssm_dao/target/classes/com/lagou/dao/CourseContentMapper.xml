@@ -44,4 +44,49 @@
         cl.status
     </sql>
 
+    <!--章节对应的课程信息-->
+    <select id="findCourseByCourseId" parameterType="int" resultType="course">
+        select * from course where id = #{courseId}
+    </select>
+    
+    
+    <!--保存章节信息-->
+    <insert id="saveSection" parameterType="courseSection">
+        insert into course_section (course_id,section_name,description,order_num,status,create_time,update_time) values (#{courseId},#{sectionName},#{description},#{orderNum},#{status},#{createTime},#{updateTime})
+    </insert>
+
+    <!--修改章节信息-->
+    <update id="updateSection" parameterType="courseSection">
+        update course_section
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="sectionName != null and sectionName != ''">
+                section_name= #{sectionName},
+            </if>
+            <if test="description != null and description != ''">
+                description= #{description},
+            </if>
+            <if test="orderNum != null and orderNum != '' or orderNum == 0">
+                order_num= #{orderNum},
+            </if>
+            <if test="updateTime != null">
+                update_time= #{updateTime}
+            </if>
+        </trim>
+        <where>
+            <if test="id != null and id != '' ">
+                id = #{id}
+            </if>
+        </where>
+    </update>
+
+    <!--修改章节状态-->
+    <update id="updateSectionStatus" parameterType="courseSection">
+        update course_section set status = #{status} where id = #{id};
+    </update>
+
+    <!--保存课时信息-->
+    <insert id="saveLesson" parameterType="courseLesson">
+        insert into course_lesson (course_id,section_id,theme,duration,is_free,order_num,status,create_time,update_time) values (#{courseId},#{sectionId},#{theme},#{duration},#{isFree},#{orderNum},#{status},#{createTime},#{updateTime})
+    </insert>
+
 </mapper>
