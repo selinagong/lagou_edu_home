@@ -89,4 +89,36 @@
         insert into course_lesson (course_id,section_id,theme,duration,is_free,order_num,status,create_time,update_time) values (#{courseId},#{sectionId},#{theme},#{duration},#{isFree},#{orderNum},#{status},#{createTime},#{updateTime})
     </insert>
 
+    <!--修改课时信息-->
+    <update id="updateLesson" parameterType="courseLesson">
+        update course_lesson
+        <trim prefix="set" prefixOverrides=",">
+            <if test="courseId != null and courseId != ''">
+                course_id = #{courseId},
+            </if>
+            <if test="sectionId != null and sectionId != ''">
+                section_id = #{sectionId},
+            </if>
+            <if test="theme != null and theme != ''">
+                theme = #{theme},
+            </if>
+            <if test="duration != null and duration != ''">
+                duration = #{duration},
+            </if>
+            <if test="isFree != null and isFree != ''">
+                is_free = #{isFree},
+            </if>
+            <if test="orderNum != null and orderNum != ''">
+                order_num = #{orderNum},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime}
+            </if>
+        </trim>
+        <where>
+            <if test="id != null and id != '' ">
+                id = #{id}
+            </if>
+        </where>
+    </update>
 </mapper>

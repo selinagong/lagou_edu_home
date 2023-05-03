@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Objects;
 
 @RestController
 @RequestMapping("/courseContent")
@@ -54,10 +53,12 @@ public class CourseContentController {
         return new ResponseResult(true,200,"success",map);
     }
 
-    @RequestMapping("/saveLesson")
-    public ResponseResult saveLesson(@RequestBody CourseLesson lesson){
+    @RequestMapping("/saveOrUpdateLesson")
+    public ResponseResult saveOrUpdateLesson(@RequestBody CourseLesson lesson){
         if (lesson.getId() == null) {
             courseContentService.saveLesson(lesson);
+        }else {
+            courseContentService.updateLesson(lesson);
         }
         return new ResponseResult(true,200,"success",null);
     }
