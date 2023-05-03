@@ -69,6 +69,12 @@
     </update>
 
     <!--回显广告信息-->
+    <select id="findPromotionAdById" parameterType="int" resultType="promotionAd">
+        select * from promotion_ad where id = #{id}
+    </select>
 
     <!--广告状态上下线-->
+    <update id="updatePromotionAdStatus" parameterType="promotionAd">
+        update promotion_ad set status = #{status} where id = #{id}
+    </update>
 </mapper>

@@ -17,6 +17,8 @@ public interface PromotionAdMapper {
     public void updatePromotionAd(PromotionAd promotionAd);
 
     // 回显广告信息
+    public PromotionAd findPromotionAdById(int id);
 
     // 广告状态上下线
+    public void updatePromotionAdStatus(PromotionAd promotionAd);
 }

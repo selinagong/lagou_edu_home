@@ -15,4 +15,10 @@ public interface PromotionAdService {
 
     // 修改广告
     public void updatePromotionAd(PromotionAd promotionAd);
+
+    // 回显广告信息
+    public PromotionAd findPromotionAdById(int id);
+
+    // 广告状态上下线
+    public void updatePromotionAdStatus(int id, int status);
 }

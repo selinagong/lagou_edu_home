@@ -19,7 +19,7 @@ public class PromotionAdServiceImpl implements PromotionAdService {
     private PromotionAdMapper adMapper;
 
     @Override
-    public PageInfo findAllPromotionAdByPage(PromotionAdVO adVO) {
+    public PageInfo<PromotionAd> findAllPromotionAdByPage(PromotionAdVO adVO) {
         PageHelper.startPage(adVO.getCurrentPage(),adVO.getPageSize());
         List<PromotionAd> allAd = adMapper.findAllPromotionAdByPage();
         return new PageInfo<>(allAd);
@@ -38,5 +38,18 @@ public class PromotionAdServiceImpl implements PromotionAdService {
         Date date = new Date();
         promotionAd.setUpdateTime(date);
         adMapper.updatePromotionAd(promotionAd);
+    }
+
+    @Override
+    public PromotionAd findPromotionAdById(int id) {
+        return adMapper.findPromotionAdById(id);
+    }
+
+    @Override
+    public void updatePromotionAdStatus(int id, int status) {
+        PromotionAd promotionAd = new PromotionAd();
+        promotionAd.setId(id);
+        promotionAd.setStatus(status);
+        adMapper.updatePromotionAdStatus(promotionAd);
     }
 }

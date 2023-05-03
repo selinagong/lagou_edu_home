@@ -33,4 +33,16 @@ public class PromotionAdController {
         }
         return new ResponseResult(true,200,"success",null);
     }
+
+    @RequestMapping("/findPromotionAdById")
+    public ResponseResult findPromotionAdById(int id){
+        PromotionAd promotionAd = adService.findPromotionAdById(id);
+        return new ResponseResult(true,200,"success",promotionAd);
+    }
+
+    @RequestMapping("/updatePromotionAdStatus")
+    public ResponseResult updatePromotionAdStatus(int id, int status){
+        adService.updatePromotionAdStatus(id,status);
+        return new ResponseResult(true,200,"success",null);
+    }
 }
