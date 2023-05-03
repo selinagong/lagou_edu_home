@@ -9,6 +9,7 @@ import com.lagou.service.PromotionAdService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -22,5 +23,20 @@ public class PromotionAdServiceImpl implements PromotionAdService {
         PageHelper.startPage(adVO.getCurrentPage(),adVO.getPageSize());
         List<PromotionAd> allAd = adMapper.findAllPromotionAdByPage();
         return new PageInfo<>(allAd);
+    }
+
+    @Override
+    public void savePromotionAd(PromotionAd promotionAd) {
+        Date date = new Date();
+        promotionAd.setCreateTime(date);
+        promotionAd.setUpdateTime(date);
+        adMapper.savePromotionAd(promotionAd);
+    }
+
+    @Override
+    public void updatePromotionAd(PromotionAd promotionAd) {
+        Date date = new Date();
+        promotionAd.setUpdateTime(date);
+        adMapper.updatePromotionAd(promotionAd);
     }
 }

@@ -10,11 +10,11 @@ public interface PromotionAdMapper {
     //分页获取所有的广告列表
     public List<PromotionAd> findAllPromotionAdByPage();
 
-    // 图片上传
-
     // 新建广告
+    public void savePromotionAd(PromotionAd promotionAd);
 
     // 修改广告
+    public void updatePromotionAd(PromotionAd promotionAd);
 
     // 回显广告信息
 
