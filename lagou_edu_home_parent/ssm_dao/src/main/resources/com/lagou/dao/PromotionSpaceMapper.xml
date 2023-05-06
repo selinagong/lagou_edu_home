@@ -13,7 +13,7 @@
         insert into promotion_space values(null,#{name},#{spaceKey},#{createTime},#{updateTime},#{isDel})
     </insert>
 
-    <!--添加广告位-->
+    <!--修改广告位-->
     <update id="updatePromotionSpace" parameterType="promotionSpace">
         UPDATE promotion_space SET NAME = #{name},updateTime = #{updateTime} where id = #{id}
     </update>

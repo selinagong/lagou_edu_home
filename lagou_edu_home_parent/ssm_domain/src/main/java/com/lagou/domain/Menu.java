@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * 菜单类
@@ -51,8 +52,17 @@ public class Menu {
     //更新人
     private String updatedBy;
 
+    private List<Menu> parentMenuList;
 
+    private List<Menu> subMenuList;
 
+    public List<Menu> getSubMenuList() {
+        return subMenuList;
+    }
+
+    public void setSubMenuList(List<Menu> subMenuList) {
+        this.subMenuList = subMenuList;
+    }
 
     public Integer getId() {
         return id;
@@ -164,7 +174,7 @@ public class Menu {
 
     @Override
     public String toString() {
-        return "Menu{" +
+        return "parentMenuList:{" +
                 "id=" + id +
                 ", parentId=" + parentId +
                 ", href='" + href + '\'' +
@@ -178,6 +188,7 @@ public class Menu {
                 ", updatedTime=" + updatedTime +
                 ", createdBy='" + createdBy + '\'' +
                 ", updatedBy='" + updatedBy + '\'' +
+                ", subMenuList=" + subMenuList +
                 '}';
     }
 }

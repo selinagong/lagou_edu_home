@@ -2,7 +2,7 @@ package com.lagou.domain;
 
 import java.util.Date;
 
-public class User_Role_relation {
+public class UserRoleRelation {
 
     private Integer id;
     private Integer userId;
@@ -10,7 +10,7 @@ public class User_Role_relation {
     private Date createdTime;
     private Date updatedTime;
     private String createdBy;
-    private String updatedby;
+    private String updateBy;
 
     public Integer getId() {
         return id;
@@ -60,11 +60,11 @@ public class User_Role_relation {
         this.createdBy = createdBy;
     }
 
-    public String getUpdatedby() {
-        return updatedby;
+    public String getUpdateBy() {
+        return updateBy;
     }
 
-    public void setUpdatedby(String updatedby) {
-        this.updatedby = updatedby;
+    public void setUpdateBy(String updateBy) {
+        this.updateBy = updateBy;
     }
 }

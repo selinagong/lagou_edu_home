@@ -2,7 +2,7 @@ package com.lagou.domain;
 
 import java.util.Date;
 
-public class Role_menu_relation {
+public class RoleMenuRelation {
 
     private Integer id;
     private Integer menuId;
@@ -10,7 +10,8 @@ public class Role_menu_relation {
     private Date createdTime;
     private Date updatedTime;
     private String createdBy;
-    private String updatedby;
+    private String updatedBy;
+    private Menu menu;
 
     public Integer getId() {
         return id;
@@ -60,11 +61,19 @@ public class Role_menu_relation {
         this.createdBy = createdBy;
     }
 
-    public String getUpdatedby() {
-        return updatedby;
+    public String getUpdatedBy() {
+        return updatedBy;
     }
 
-    public void setUpdatedby(String updatedby) {
-        this.updatedby = updatedby;
+    public void setUpdatedBy(String updatedBy) {
+        this.updatedBy = updatedBy;
+    }
+
+    public Menu getMenu() {
+        return menu;
+    }
+
+    public void setMenu(Menu menu) {
+        this.menu = menu;
     }
 }
