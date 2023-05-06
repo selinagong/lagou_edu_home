@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lagou.dao.CourseContentMapper">
+
+    <resultMap id="BaseResultMap" type="courseSection">
+        <result property="id" column="id"/>
+        <result property="courseId" column="course_name"/>
+        <result property="sectionName" column="section_name"/>
+        <result property="description" column="description"/>
+        <result property="orderNum" column="order_num"/>
+        <result property="status" column="status"/>
+        <collection property="lessonList" resultMap="lessonListResultMap"/>
+    </resultMap>
+    <resultMap id="lessonListResultMap" type="courseLesson">
+        <id property="id" column="lessonId"/>
+        <result property="courseId" column="course_id"/>
+        <result property="sectionId" column="section_id"/>
+        <result property="theme" column="theme"/>
+        <result property="duration" column="duration"/>
+        <result property="isFree" column="is_free"/>
+        <result property="orderNum" column="order_num"/>
+        <result property="status" column="status"/>
+    </resultMap>
+
+    <select id="findSectionAndLessonByCourseId" parameterType="int" resultMap="BaseResultMap">
+        select cs.*,
+        <include refid="lesson_column_list"/>
+        from course_section cs
+        left join course_lesson cl
+        on cl.section_id = cs.id
+        where cl.course_id = #{courseId}
+    </select>
+
+    <!-- 课时表字段信息 -->
+    <sql id="lesson_column_list">
+        cl.id as lessonId,
+        cl.course_id,
+        cl.section_id,
+        cl.theme,
+        cl.duration,
+        cl.is_free,
+        cl.order_num,
+        cl.status
+    </sql>
+
+    <!--章节对应的课程信息-->
+    <select id="findCourseByCourseId" parameterType="int" resultType="course">
+        select * from course where id = #{courseId}
+    </select>
+    
+    
+    <!--保存章节信息-->
+    <insert id="saveSection" parameterType="courseSection">
+        insert into course_section (course_id,section_name,description,order_num,status,create_time,update_time) values (#{courseId},#{sectionName},#{description},#{orderNum},#{status},#{createTime},#{updateTime})
+    </insert>
+
+    <!--修改章节信息-->
+    <update id="updateSection" parameterType="courseSection">
+        update course_section
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="sectionName != null and sectionName != ''">
+                section_name= #{sectionName},
+            </if>
+            <if test="description != null and description != ''">
+                description= #{description},
+            </if>
+            <if test="orderNum != null and orderNum != '' or orderNum == 0">
+                order_num= #{orderNum},
+            </if>
+            <if test="updateTime != null">
+                update_time= #{updateTime}
+            </if>
+        </trim>
+        <where>
+            <if test="id != null and id != '' ">
+                id = #{id}
+            </if>
+        </where>
+    </update>
+
+    <!--修改章节状态-->
+    <update id="updateSectionStatus" parameterType="courseSection">
+        update course_section set status = #{status} where id = #{id};
+    </update>
+
+    <!--保存课时信息-->
+    <insert id="saveLesson" parameterType="courseLesson">
+        insert into course_lesson (course_id,section_id,theme,duration,is_free,order_num,status,create_time,update_time) values (#{courseId},#{sectionId},#{theme},#{duration},#{isFree},#{orderNum},#{status},#{createTime},#{updateTime})
+    </insert>
+
+    <!--修改课时信息-->
+    <update id="updateLesson" parameterType="courseLesson">
+        update course_lesson
+        <trim prefix="set" prefixOverrides=",">
+            <if test="courseId != null and courseId != ''">
+                course_id = #{courseId},
+            </if>
+            <if test="sectionId != null and sectionId != ''">
+                section_id = #{sectionId},
+            </if>
+            <if test="theme != null and theme != ''">
+                theme = #{theme},
+            </if>
+            <if test="duration != null and duration != ''">
+                duration = #{duration},
+            </if>
+            <if test="isFree != null and isFree != ''">
+                is_free = #{isFree},
+            </if>
+            <if test="orderNum != null and orderNum != ''">
+                order_num = #{orderNum},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime}
+            </if>
+        </trim>
+        <where>
+            <if test="id != null and id != '' ">
+                id = #{id}
+            </if>
+        </where>
+    </update>
+</mapper>
