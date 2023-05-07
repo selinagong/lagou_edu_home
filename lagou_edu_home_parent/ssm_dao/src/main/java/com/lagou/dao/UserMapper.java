@@ -12,4 +12,14 @@ public interface UserMapper {
 
     //修改用户状态
     public void updateUserStatus(User user);
+
+    //用户登陆
+    public User login(User user);
+
+
+    // 分配角色(回显) findUserRoleById
+
+    // 分配角色权限 userContextRole
+
+    // 获取用户拥有的菜单权限 getUserPermissions
 }
