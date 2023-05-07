@@ -1,6 +1,7 @@
 package com.lagou.domain;
 
 import java.util.Date;
+import java.util.List;
 
 public class RoleMenuRelation {
 
@@ -11,7 +12,7 @@ public class RoleMenuRelation {
     private Date updatedTime;
     private String createdBy;
     private String updatedBy;
-    private Menu menu;
+    private List<Integer> menuIdList;
 
     public Integer getId() {
         return id;
@@ -69,11 +70,11 @@ public class RoleMenuRelation {
         this.updatedBy = updatedBy;
     }
 
-    public Menu getMenu() {
-        return menu;
+    public List<Integer> getMenuIdList() {
+        return menuIdList;
     }
 
-    public void setMenu(Menu menu) {
-        this.menu = menu;
+    public void setMenuIdList(List<Integer> menuIdList) {
+        this.menuIdList = menuIdList;
     }
 }

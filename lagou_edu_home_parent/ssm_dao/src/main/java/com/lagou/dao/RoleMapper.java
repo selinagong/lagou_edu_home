@@ -21,5 +21,14 @@ public interface RoleMapper {
     public List<Menu> findAllMenu();
 
     //根据角色ID查询关联菜单ID
-    public List<Integer> findMenuByRoleId(int roleId);
+    public List<String> findMenuByRoleId(int roleId);
+
+    //删除角色关联菜单
+    public void deleteRoleContextMenu(int roleId);
+
+    //为角色分配菜单
+    public void RoleContextMenu(RoleMenuRelation roleMenuRelation);
+
+    //删除角色
+    public void deleteRole(int id);
 }

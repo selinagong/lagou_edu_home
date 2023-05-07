@@ -3,6 +3,8 @@ package com.lagou.service.impl;
 import com.lagou.dao.RoleMapper;
 import com.lagou.domain.Menu;
 import com.lagou.domain.Role;
+import com.lagou.domain.RoleMenuRelation;
+import com.lagou.domain.RoleMenuVO;
 import com.lagou.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -44,7 +46,31 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
-    public List<Integer> findMenuByRoleId(int roleId) {
+    public List<String> findMenuByRoleId(int roleId) {
         return roleMapper.findMenuByRoleId(roleId);
+    }
+
+    @Override
+    public void RoleContextMenu(RoleMenuVO roleMenuVo) {
+
+        roleMapper.deleteRoleContextMenu(roleMenuVo.getRoleId());
+
+        System.out.println(roleMenuVo.getMenuIdList());
+        for (int mid : roleMenuVo.getMenuIdList()) {
+            RoleMenuRelation roleMenuRelation = new RoleMenuRelation();
+            roleMenuRelation.setRoleId(roleMenuVo.getRoleId());
+            roleMenuRelation.setMenuId(mid);
+            roleMenuRelation.setCreatedTime(new Date());
+            roleMenuRelation.setUpdatedTime(new Date());
+            roleMenuRelation.setCreatedBy("system");
+            roleMenuRelation.setUpdatedBy("system");
+            roleMapper.RoleContextMenu(roleMenuRelation);
+        }
+    }
+
+    @Override
+    public void deleteRole(int id) {
+        roleMapper.deleteRoleContextMenu(id);
+        roleMapper.deleteRole(id);
     }
 }

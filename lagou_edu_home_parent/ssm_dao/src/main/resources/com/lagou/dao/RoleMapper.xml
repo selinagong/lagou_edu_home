@@ -72,12 +72,23 @@
     </select>
 
     <!--根据角色ID查询菜单-->
-    <select id="findMenuByRoleId" parameterType="int" resultType="int">
+    <select id="findMenuByRoleId" parameterType="int" resultType="string">
         select menu_id from role_menu_relation where role_id = #{roleId}
     </select>
 
+    <!--删除角色菜单关联信息-->
+    <delete id="deleteRoleContextMenu" parameterType="int">
+        delete from role_menu_relation where role_id = #{id}
+    </delete>
+
     <!--为角色分配菜单-->
+    <insert id="RoleContextMenu" parameterType="roleMenuRelation">
+        insert into role_menu_relation values (null,#{menuId},#{roleId},#{createdTime},#{updatedTime},#{createdBy},#{updatedBy})
+    </insert>
 
     <!--删除角色-->
+    <delete id="deleteRole" parameterType="int">
+        delete from roles where id = #{id}
+    </delete>
 
 </mapper>
