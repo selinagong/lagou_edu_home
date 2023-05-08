@@ -5,15 +5,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.lagou</groupId>
-    <artifactId>lagou_edu_parent</artifactId>
+    <artifactId>lagou_edu_web</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>pom</packaging>
-    <modules>
-        <module>lagou_edu_domain</module>
-        <module>lagou_edu_dao</module>
-        <module>lagou_edu_service</module>
-        <module>lagou_edu_utils</module>
-    </modules>
+
+    <packaging>war</packaging>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -99,6 +94,13 @@
     </dependencyManagement>
 
     <dependencies>
+
+        <dependency>
+            <groupId>com.lagou</groupId>
+            <artifactId>lagou_edu_domain</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
         <!--mybatis坐标-->
         <dependency>
             <groupId>mysql</groupId>
@@ -272,7 +274,7 @@
                 <groupId>org.apache.tomcat.maven</groupId>
                 <artifactId>tomcat7-maven-plugin</artifactId>
                 <configuration>
-                    <port>8001</port>
+                    <port>8002</port>
                     <path>/</path>
                 </configuration>
                 <executions>
@@ -287,4 +289,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>
